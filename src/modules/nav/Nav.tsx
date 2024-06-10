@@ -30,7 +30,7 @@ const Nav = () => {
 const navItems: NavType = [
 	{
 		title: "Store",
-		link: "/store",
+		link: "/dashboard/store",
 		icon: (
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -47,7 +47,7 @@ const navItems: NavType = [
 	},
 	{
 		title: "Manage",
-		link: "/manage",
+		link: "/dashboard/manage",
 		icon: (
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -64,7 +64,7 @@ const navItems: NavType = [
 	},
 	{
 		title: "Analytic",
-		link: "/analytic",
+		link: "/dashboard/analytic",
 		icon: (
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -81,7 +81,7 @@ const navItems: NavType = [
 	},
 	{
 		title: "Setting",
-		link: "/setting",
+		link: "/dashboard/setting",
 		icon: (
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -98,7 +98,7 @@ const navItems: NavType = [
 	},
 	{
 		title: "Logout",
-		link: "/",
+		link: "/dashboard/",
 		icon: (
 			<svg
 				xmlns="http://www.w3.org/2000/svg"

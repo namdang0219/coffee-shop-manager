@@ -2,10 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+	.text-balance {
+		text-wrap: balance;
+	}
+}
+
+.scrollbar-hidden {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+.scrollbar-hidden::-webkit-scrollbar {
+	display: none;
 }
