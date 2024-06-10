@@ -8,10 +8,25 @@
 	}
 }
 
+// scroll bar hidden
 .scrollbar-hidden {
 	-ms-overflow-style: none;
 	scrollbar-width: none;
 }
 .scrollbar-hidden::-webkit-scrollbar {
 	display: none;
+}
+
+// styling scrollbar
+.product-wrapper::-webkit-scrollbar {
+	width: 2px;
+}
+
+.product-wrapper::-webkit-scrollbar-track {
+	display: display;
+	// box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.product-wrapper::-webkit-scrollbar-thumb {
+	background-color: rgb(221, 221, 221);
 }

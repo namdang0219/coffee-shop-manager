@@ -4,7 +4,7 @@ import React from "react";
 
 const OrderSidebar = () => {
 	return (
-		<div className="w-[450px] border-l border-l-gray-200 h-full flex flex-col">
+		<div className="w-[400px] border-l border-l-gray-200 h-full flex flex-col">
 			<div className="flex w-full items-center gap-2 px-6 pt-6 pb-4 border-b border-b-gray-200">
 				<h2 className="text-xl font-semibold flex-1 text-primary">
 					Order #<span>1A</span>
@@ -13,19 +13,18 @@ const OrderSidebar = () => {
 				<div className="ml-5 w-12 text-center">Price</div>
 			</div>
 			<ul className="flex-1 px-6 overflow-y-scroll scrollbar-hidden pt-4">
-				{Array(6)
-					.fill(null)
-					.map((item, index) => (
-						<li key={index}>
-							<OrderItem></OrderItem>
+				{productDataMock.length > 0 && productDataMock
+					.map((item) => (
+						<li key={item.id}>
+							<OrderItem item={item}></OrderItem>
 						</li>
 					))}
 			</ul>
 			<div className="py-6 border-t border-t-gray-200 px-6">
-        <div className="flex items-center justify-between mb-4 text-lg">
-          <div>Total:</div>
-          <div>¥1200</div>
-        </div>
+				<div className="flex items-center justify-between mb-4 text-lg">
+					<div>Total:</div>
+					<div>¥1200</div>
+				</div>
 				<button className="hover:bg-primaryHover transition-all rounded-md h-[50px] bg-primary text-white w-full flex items-center justify-center">
 					Payment
 				</button>
@@ -33,5 +32,11 @@ const OrderSidebar = () => {
 		</div>
 	);
 };
+
+const productDataMock = [
+	{ id: 1, price: 200 },
+	{ id: 2, price: 300 },
+	{ id: 3, price: 400 },
+];
 
 export default OrderSidebar;

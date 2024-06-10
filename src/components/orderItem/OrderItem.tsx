@@ -1,7 +1,24 @@
+"use client";
 import Image from "next/image";
 import React, { ReactNode } from "react";
 
-const OrderItem = () => {
+type OrderItemPropType = {
+	item: {
+		price: number;
+	};
+};
+
+const OrderItem = ({ item: { price = 200 } }: OrderItemPropType) => {
+	const [itemNumber, setItemNumber] = React.useState<number>(1);
+
+	const handleItemIncrement = () => {
+		setItemNumber(itemNumber + 1);
+	};
+	const handleItemDecreament = () => {
+		if (itemNumber >= 1) {
+			setItemNumber(itemNumber - 1);
+		}
+	};
 	return (
 		<div className="mb-6 flex items-center gap-4">
 			<div className="flex gap-4 flex-1">
@@ -21,12 +38,12 @@ const OrderItem = () => {
 						Mango Frape
 					</h3>
 					<p className="text-gray-400">
-						Price: <span>¥200</span>
+						Price: ¥<span>{price}</span>
 					</p>
 				</div>
 			</div>
 			<div className="flex items-center justify-center gap-1">
-				<NumButton>
+				<NumButton onClick={handleItemDecreament}>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						width={18}
@@ -39,8 +56,8 @@ const OrderItem = () => {
 						></path>
 					</svg>
 				</NumButton>
-				<div className="w-8 text-center">1</div>
-				<NumButton>
+				<div className="w-6 text-center">{itemNumber}</div>
+				<NumButton onClick={handleItemIncrement}>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						width={18}
@@ -55,15 +72,24 @@ const OrderItem = () => {
 				</NumButton>
 			</div>
 			<div className="text-gray-400 w-12 text-center">
-				<span>¥200</span>
+				¥<span>{price * itemNumber}</span>
 			</div>
 		</div>
 	);
 };
 
-const NumButton = ({ children }: { children: ReactNode }) => {
+const NumButton = ({
+	children,
+	onClick,
+}: {
+	children: ReactNode;
+	onClick: () => void;
+}) => {
 	return (
-		<button className="size-6 flex items-center justify-center text-white bg-primary hover:bg-primaryHover transition-all rounded-full">
+		<button
+			onClick={onClick}
+			className="size-6 flex items-center justify-center text-white bg-primary hover:bg-primaryHover transition-all rounded-full"
+		>
 			{children}
 		</button>
 	);

@@ -5,7 +5,7 @@ import Header from "./Header";
 
 const MainLayout = ({ children }: { children: ReactNode }) => {
 	return (
-		<div className="flex w-full">
+		<div className="flex w-full h-screen">
 			<div className="w-[250px] bg-primary h-screen">
 				<div className=" px-4 py-4">
 					<h1 className="text-white font-bold text-2xl">

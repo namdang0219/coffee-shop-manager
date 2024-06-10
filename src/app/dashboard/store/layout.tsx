@@ -10,4 +10,6 @@ const StoreLayout = ({ children }: { children: React.ReactNode }) => {
 	);
 };
 
+
+
 export default StoreLayout;

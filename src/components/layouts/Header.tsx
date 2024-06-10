@@ -1,4 +1,5 @@
 "use client";
+import { dataMock } from "@/mocks/dataMock";
 import Image from "next/image";
 import React from "react";
 
@@ -26,7 +27,9 @@ const Header = () => {
 	return (
 		<div className="h-[72px] p-6 flex items-center justify-between border-b">
 			<div>
-				<div className="font-medium text-xl text-primary">Meow Coffee</div>
+				<div className="font-medium text-xl text-primary">
+					{dataMock.storeInfo.name}
+				</div>
 				<p className="text-normal text-gray-400">{currentDate}</p>
 			</div>
 			<div className=" h-[50px] w-full max-w-[450px] relative flex items-center gap-2">
@@ -52,17 +55,27 @@ const Header = () => {
 					className=" w-full h-full pl-12 pr-4 border border-gray-200 rounded-md focus:outline-none"
 					placeholder="Search for food, drink, etc"
 				/>
-				<button className="text-white bg-primary px-4 h-full rounded-md">
+				<button className="text-white bg-primary hover:bg-primaryHover px-4 h-full rounded-md">
 					Search
 				</button>
 			</div>
 			<div className="flex items-center gap-3">
-				<div className='font-semibold text-lg'><span>Welcome, </span><span className="text-primary">Ngoc Mai</span></div>
+				<div className="font-semibold text-lg">
+					<div>
+						<span>Welcome, </span>
+						<span className="text-primary">
+							{dataMock.storeInfo.name}
+						</span>
+					</div>
+					<div className="text-gray-400 font-normal text-sm text-right">{dataMock.storeInfo.email}</div>
+				</div>
 				<div className="relative">
 					<Image
 						alt="user-avatar"
 						src={
-							"https://plus.unsplash.com/premium_photo-1683141237355-d966b653f414?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+							dataMock.storeInfo.avatar
+								? dataMock.storeInfo.avatar
+								: "https://www.freeiconspng.com/thumbs/retail-store-icon/retail-shop-icon-3.png"
 						}
 						width={50}
 						height={50}
