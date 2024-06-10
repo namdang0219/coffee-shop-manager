@@ -1,15 +1,16 @@
 "use client";
+import { dataMock } from "@/mocks/dataMock";
 import Image from "next/image";
 import React, { ReactNode } from "react";
 
 type OrderItemPropType = {
-	item: {
-		price: number;
-	};
+	pId: number,
+	quantity: number,
 };
 
-const OrderItem = ({ item: { price = 200 } }: OrderItemPropType) => {
-	const [itemNumber, setItemNumber] = React.useState<number>(1);
+const OrderItem = ({ item: { pId, quantity } }: {item: OrderItemPropType}) => {
+	const [itemNumber, setItemNumber] = React.useState<number>(quantity);
+	const OrderItemData = dataMock.products.find((item) => item.pId === pId);
 
 	const handleItemIncrement = () => {
 		setItemNumber(itemNumber + 1);
@@ -26,7 +27,7 @@ const OrderItem = ({ item: { price = 200 } }: OrderItemPropType) => {
 					<Image
 						alt="product-image"
 						src={
-							"https://images.unsplash.com/photo-1546173159-315724a31696?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+							OrderItemData?.thumb || ''
 						}
 						width={60}
 						height={60}
@@ -35,10 +36,10 @@ const OrderItem = ({ item: { price = 200 } }: OrderItemPropType) => {
 				</div>
 				<div>
 					<h3 className="text-lg font-medium line-clamp-2">
-						Mango Frape
+						{OrderItemData?.name}
 					</h3>
 					<p className="text-gray-400">
-						Price: ¥<span>{price}</span>
+						Price: ¥<span>{OrderItemData?.price}</span>
 					</p>
 				</div>
 			</div>
@@ -72,7 +73,7 @@ const OrderItem = ({ item: { price = 200 } }: OrderItemPropType) => {
 				</NumButton>
 			</div>
 			<div className="text-gray-400 w-12 text-center">
-				¥<span>{price * itemNumber}</span>
+				¥<span>{OrderItemData?.price ? OrderItemData?.price * itemNumber : 'NaN'}</span>
 			</div>
 		</div>
 	);
